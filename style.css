@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: white;
+    --bg-url: url(imagens/bg-mobile.jpg);
+    --border-color: rgba(255, 255, 255, 0.5);
+    --bck-links: rgba(255, 255, 255, 0.1);
+    --border-h-links: white;
+    --bck-social-h: rgba(255, 255, 255, 0.2);
+    --swicth-bck: url(imagens/MoonStars.svg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+}
+
+.light {
+    --text-color: black;
+    --bg-url: url(imagens/bg-mobile-light.jpg);
+    --border-color: rgba(0, 0, 0, 0.5);
+    --bck-links: rgba(189, 188, 188, 0.178);
+    --border-h-links: black;
+    --bck-social-h: rgba(97, 97, 97, 0.212);
+    --swicth-bck: url(imagens/Sun.svg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: var(--bg-url);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    height: 100vh;
+}
+
+#container {
+    flex: auto;
+    width: 312px;
+    margin: 55px auto 0px;
+}
+
+#profyle {
+    text-align: center;
+}
+
+#profyle > img {
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+#profyle > p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+#switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+#switch button {
+    position: absolute;
+    z-index: 1; /** Muda o andar do elemento ( coloca-o na frente de outro elemento) **/
+    transform: translateX(-50%);
+
+    width: 32px;
+    height: 32px;
+    
+    border-radius: 50%;
+    border: 0;
+
+    background-color: white;
+    background-image: var(--swicth-bck);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    animation: slide-back 0.5s;
+}
+
+.light #switch button {
+    animation: slide-in 0.5s forwards;
+}
+
+#switch button:hover {
+    outline: 8px solid var(--bck-social-h);
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background-color: var(--bck-links);
+    border: 1px solid var(--border-color);
+    border-radius: 9999px;
+}
+
+
+#links {
+    text-align: center;
+    width: 100%;
+}
+
+
+#links ul {
+    list-style: none;
+
+    padding: 24px 0px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;  /** Coloca espaço entre os elementos apenas nas laterais **/
+}
+
+
+#links ul li a {
+    padding: 16px 24px;
+    border-radius: 8px;
+
+    list-style-type: none;
+    text-decoration: none;
+    color: var(--text-color);
+
+    background-color: var(--bck-links);
+    border: 1px solid var(--border-color);
+
+    display: flex;
+    justify-content: center;  /** alinha os elementos ao centro, neste caso **/
+    align-items: center;  /** alinha os intens no centro da caixa **/
+
+    backdrop-filter: blur(4px);  /** adiciona um embaçado no elemento **/
+    -webkit-backdrop-filter: blur(4px);  /** adiciona uma propriedade que posibilita a compatibilidade a outros brawser (safari, outros) **/
+
+    transition: background 0.5;
+}
+
+
+
+#links ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid var(--border-h-links);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+#socialmedia {
+    display: flex;
+    justify-content: center;
+
+    padding: 24px 0; 
+
+    font-size: 24px;
+}
+
+#socialmedia a {
+    color: var(--text-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+    border-radius: 50%;
+
+}
+
+#socialmedia > a:hover {
+    background-color: var(--bck-social-h);
+
+    transition: 0.5s;
+}
+
+footer {
+    color: var(--text-color);
+    text-align: center;
+    font-size: smaller;
+    padding: 24px;
+}
+
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(imagens/bg-desktop.jpg);
+    }
+
+    .light {
+        --bg-url: url(imagens/bg-desktop-light.jpg);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translate(-50%);
+    }
+
+    to {
+        transform: translate(50%);
+    }
+}
+
+@keyframes slide-back {
+    from {
+        transform: translate(50%);
+    }
+
+    to {
+        transform: translate(-50%);
+    }
+}
